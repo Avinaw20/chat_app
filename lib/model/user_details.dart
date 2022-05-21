@@ -12,4 +12,13 @@ class UserDetails {
     photoURL = json["photoURL"];
     email = json["email"];
   }
+
+  Map<String, dynamic> toJson() {
+    //object - data
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['displayName'] = this.email;
+    data['email'] = this.photoURL;
+
+    return data;
+  }
 }
