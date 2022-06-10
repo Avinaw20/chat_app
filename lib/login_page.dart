@@ -50,49 +50,43 @@ class _LoginPageState extends State<LoginPage> {
 
       children: [
         CircleAvatar(
-          backgroundImage: Image.network(model.userDetails!.photoURL ?? "").image,
+          backgroundImage:
+              Image.network(model.userDetails!.photoURL ?? "").image,
           radius: 50,
         ),
 
-        Text(model.userDetails!.displayName?? ""),
-        Text(model.userDetails!.email?? "");
+        Text(model.userDetails!.displayName ?? ""),
+        Text(model.userDetails!.email ?? ""),
 
-
-      //logout
-      ActionChip(
-      Avatar: Icon(Icons.logout),
-      Label: Text("Logout"),
-      Onpressed: () 
-      {
-        Provider.of<LoginController>(context, listen: false).logout();
-
-      }
-      )
+        //logout
+        ActionChip(
+            avatar: Icon(Icons.logout),
+            label: Text("Logout"),
+            onPressed: () {
+              Provider.of<LoginController>(context, listen: false).logout();
+            })
       ],
-
-
-
     );
   }
 
   loginControllers(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GestureDetector()(
-            child: Image.asset("assets/google.png"
-            width: 240,
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GestureDetector(
+            child: Image.asset(
+              "assets/google.png",
+              width: 240,
             ),
-            onTap:()
-            {
-              Provider.of<LoginController>(context, listen:false).googleLogin();
-            }
-          ),
-
-        SizedBox(height: 10,)
-        ],
-      )
-    )
+            onTap: () {
+              Provider.of<LoginController>(context, listen: false)
+                  .googleLogin();
+            }),
+        SizedBox(
+          height: 10,
+        )
+      ],
+    ));
   }
 }
